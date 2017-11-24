@@ -84,6 +84,7 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\ISessionStorage.cs" />
     <Compile Include="Mappings\UserMap.cs" />
+    <Compile Include="Mappings\UserSessionMap.cs" />
     <Compile Include="NHibernateConfigurator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repsitories\Repository.cs" />
