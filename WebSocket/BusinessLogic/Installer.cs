@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BusinessLogic.Interfaces.Base.CRUD;
+using BusinessLogic.Services.Base.CRUD;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessLogic
 {
@@ -6,7 +8,8 @@ namespace BusinessLogic
     {
         public static void AddBuisnessServices(this IServiceCollection container)
         {
-            //container.AddScoped<IAdvertService, AdvertService>();
+            container.AddScoped<IUserService, UserService>();
+            container.AddScoped<IUserSessionService, UserSessionService>();
         }
     }
 }

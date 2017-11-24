@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared.Entities;
 
 namespace BusinessLogic.Interfaces.Base.CRUD
 {
-    interface IUserService
+    public interface IUserService : IBaseCrudService<User>
     {
     }
 }
