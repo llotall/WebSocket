@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebSocketManager;
 
-namespace Rostaxi.SocketControllers
+namespace WebSocket
 {
     public class NotificationsMessageHandler : WebSocketHandler
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
 
-namespace Masterslavl.Auth
+namespace WebSocket.Auth
 {
     public class TokenAuthOption
     {

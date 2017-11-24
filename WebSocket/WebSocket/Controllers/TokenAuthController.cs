@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Masterslavl.BusinessLogic.Interfaces.Base.CRUD;
-using Masterslavl.Models;
-using Masterslavl.Auth;
+using WebSocket.Auth;
 using System;
 using System.Linq;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,22 +8,18 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
-using Masterslavl.Shared.JsonModels;
-using Masterslavl.Utils;
-using Masterslavl.Controllers;
-using Masterslavl.Shared.Entities;
-
-namespace Masterslavl.Controllers
+namespace WebSocket
 {
     [Route("api/[controller]")]
     public class TokenAuthController : BaseController
     {
-        public IAdminService AdminService;
-        public ISessionAdminService SessionAdminService;
+        //public IAdminService AdminService;
+        //public ISessionAdminService SessionAdminService;
 
         public TokenAuthController(
-            [FromServices] IAdminService adminService,
-            [FromServices] ISessionAdminService sessionAdminService)
+            //[FromServices] IAdminService adminService,
+            //[FromServices] ISessionAdminService sessionAdminService
+            )
         {
             AdminService = adminService;
             SessionAdminService = sessionAdminService;

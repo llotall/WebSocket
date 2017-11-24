@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace Masterslavl.Auth
+namespace WebSocket.Auth
 {
     public class RSAKeyHelper
     {
