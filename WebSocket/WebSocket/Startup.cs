@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +7,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Storage;
 using BusinessLogic;
+using Microsoft.AspNetCore.Http;
 
 namespace WebSocket
 {
@@ -35,6 +35,9 @@ namespace WebSocket
 
             services.AddNHibernate(Configuration);
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                        .AddCookie(o => o.LoginPath = new PathString("/login"));
+
             services.AddBuisnessServices();
         }
 
@@ -52,36 +55,12 @@ namespace WebSocket
                 policy.AllowCredentials();
             });
 
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions
-            //{
-            //    SlidingExpiration = true,
-            //    AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme,
-            //    Events = new CookieAuthenticationEvents()
-            //    {
-            //        OnRedirectToLogin = ctx =>
-            //        {
-            //            // по умолчанию если не авторизован кидает на страницу логинки
-            //            // это событие меняет поведение по умолчанию и просто отдает 401
-            //            if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
-            //            {
-            //                ctx.Response.StatusCode = 401;
-            //                return Task.FromResult<object>(null);
-            //            }
-            //            else
-            //            {
-            //                ctx.Response.Redirect(ctx.RedirectUri);
-            //                return Task.FromResult<object>(null);
-            //            }
-            //        }
-            //    }
-            //});
+            app.UseAuthentication();
 
             app.UseStaticFiles(new StaticFileOptions()
             {
                 ServeUnknownFileTypes = true
             });
-
-
 
             app.UseMvc();
 
