@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Shared.JsonModels.ViewModels.NTRequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +18,9 @@ namespace Rostaxi.SocketControllers
 
         }
 
-        public override async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
+        public override async Task ReceiveAsync(System.Net.WebSockets.WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
         {
+            
             var socketId = WebSocketConnectionManager.GetId(socket);
             var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
 
@@ -62,9 +62,6 @@ namespace Rostaxi.SocketControllers
 
         [JsonProperty("phone")]
         public string Phone { get; set; }
-
-        [JsonProperty("driver")]
-        public NTDriver Driver { get; set; }
 
         [JsonProperty("money")]
         public string Money { get; set; }

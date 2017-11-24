@@ -46,7 +46,7 @@ namespace WebSocketManager
             //await _next.Invoke(context);
         }
 
-        private async Task Receive(WebSocket socket, Action<WebSocketReceiveResult, byte[]> handleMessage)
+        private async Task Receive(System.Net.WebSockets.WebSocket socket, Action<WebSocketReceiveResult, byte[]> handleMessage)
         {
             var buffer = new byte[1024 * 4];
 
