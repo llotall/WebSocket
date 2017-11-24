@@ -32,7 +32,7 @@ namespace Storage
             /// </summary>
             public NHibernateConfiguration(IConfiguration appConfig)
             {
-                var connectionString = @"Server=localhost;Port=3306;Uid=root;Pwd=rootpass;Database=crmparserdb;";
+                var connectionString = @"Server=localhost;Port=3306;Uid=root;Pwd=Ivan230691;Database=web_socket;";
 
                 var hibernateConfig = Fluently.Configure().Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserMap>())
                     .Database(MySQLConfiguration.Standard.ConnectionString(connectionString).ShowSql()).BuildConfiguration();
