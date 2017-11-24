@@ -8,6 +8,8 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
+using Shared.Entities;
+
 namespace WebSocket
 {
     [Route("api/[controller]")]
