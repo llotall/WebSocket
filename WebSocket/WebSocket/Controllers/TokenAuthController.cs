@@ -63,7 +63,7 @@ namespace WebSocket
             }
         }
 
-        private string GenerateToken(Admin admin, DateTime expires)
+        private string GenerateToken(User admin, DateTime expires)
         {
             var handler = new JwtSecurityTokenHandler();
 
@@ -71,7 +71,6 @@ namespace WebSocket
             {
                 new Claim("Id", admin.ID.ToString()),
                 new Claim(ClaimsIdentity.DefaultNameClaimType, admin.Login),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, admin.Role)
             };
 
             ClaimsIdentity identity = new ClaimsIdentity(claims, "TokenAuth", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

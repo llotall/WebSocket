@@ -1,25 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using ChatApp;
+using System.Threading;
 
 namespace WebSocket
 {
     public class Program
     {
+        static ChatServer server; // сервер
+        static Thread listenThread; // потока для прослушивания
+
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
-        }
-
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            try
+            {
+                server = new ChatServer();
+                listenThread = new Thread(new ThreadStart(server.listening));
+                listenThread.Start(); //старт потока
+            }
+            catch (Exception ex)
+            {
+                server.Disconnect();
+                Console.WriteLine(ex.Message);
+            }
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .UseStartup<Startup>()
+                //.UseApplicationInsights()
                 .Build();
+
+            host.Run();
+        }
     }
 }
