@@ -71,7 +71,7 @@ namespace WebSocket
 
             var claims = new List<Claim>
             {
-                new Claim("Id", admin.ID.ToString()),
+                new Claim("Id", admin.Id.ToString()),
                 new Claim(ClaimsIdentity.DefaultNameClaimType, admin.Login),
             };
 

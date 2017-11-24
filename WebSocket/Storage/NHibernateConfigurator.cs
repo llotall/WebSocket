@@ -2,6 +2,7 @@
 using FluentNHibernate.Cfg.Db;
 using Microsoft.Extensions.Configuration;
 using NHibernate;
+using Storage.Mappings;
 
 namespace Storage
 {
