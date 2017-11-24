@@ -2,7 +2,7 @@
 
 namespace Shared.Entities
 {
-    class UserSession
+    public class UserSession
     {
         public virtual DateTime EnterDate { get; set; }
 
