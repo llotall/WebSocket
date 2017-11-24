@@ -4,7 +4,7 @@ namespace Shared.Entities
 {
     public abstract class Entity<TId>
     {
-        public virtual TId ID { get; protected set; }
+        public virtual TId Id { get; protected set; }
 
         public override bool Equals(object obj)
         {
@@ -13,7 +13,7 @@ namespace Shared.Entities
 
         private static bool IsTransient(Entity<TId> obj)
         {
-            return obj != null && Equals(obj.ID, default(TId));
+            return obj != null && Equals(obj.Id, default(TId));
         }
 
         private Type GetUnproxiedType()
@@ -29,7 +29,7 @@ namespace Shared.Entities
             if (ReferenceEquals(this, other))
                 return true;
 
-            if (!IsTransient(this) && !IsTransient(other) && Equals(ID, other.ID))
+            if (!IsTransient(this) && !IsTransient(other) && Equals(Id, other.Id))
             {
                 var otherType = other.GetUnproxiedType();
                 var thisType = GetUnproxiedType();
@@ -41,9 +41,9 @@ namespace Shared.Entities
 
         public override int GetHashCode()
         {
-            if (Equals(ID, default(TId)))
+            if (Equals(Id, default(TId)))
                 return base.GetHashCode();
-            return ID.GetHashCode();
+            return Id.GetHashCode();
         }
     }
 }
