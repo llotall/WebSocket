@@ -53,10 +53,10 @@
     <Compile Include="Interfaces\Base\IBaseCrudService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Base\BaseCrudService.cs" />
+    <Compile Include="Services\Base\CRUD\UserService.cs" />
+    <Compile Include="Services\Base\CRUD\UserSessionService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Base\CRUD\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
