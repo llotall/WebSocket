@@ -48,10 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Installer.cs" />
+    <Compile Include="Interfaces\Base\CRUD\IUserService.cs" />
+    <Compile Include="Interfaces\Base\CRUD\IUserSessionService.cs" />
+    <Compile Include="Interfaces\Base\IBaseCrudService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>

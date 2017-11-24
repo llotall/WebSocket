@@ -45,6 +45,7 @@
     <Compile Include="Entities\PersistentObject.cs" />
     <Compile Include="Entities\RequestResult.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserSession.cs" />
     <Compile Include="Enums\ErrorCodes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
