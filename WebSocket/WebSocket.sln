@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "Storage\Storage.csproj", "{64E89D46-A33B-47D7-BF87-B0F7E2D6BCAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{886902CA-5F3B-4C1B-BD37-45E72435AA28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{64E89D46-A33B-47D7-BF87-B0F7E2D6BCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64E89D46-A33B-47D7-BF87-B0F7E2D6BCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64E89D46-A33B-47D7-BF87-B0F7E2D6BCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{886902CA-5F3B-4C1B-BD37-45E72435AA28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886902CA-5F3B-4C1B-BD37-45E72435AA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886902CA-5F3B-4C1B-BD37-45E72435AA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886902CA-5F3B-4C1B-BD37-45E72435AA28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
