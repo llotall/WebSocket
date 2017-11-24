@@ -33,7 +33,7 @@ namespace Storage
             {
                 var connectionString = @"Server=localhost;Port=3306;Uid=root;Pwd=rootpass;Database=crmparserdb;";
 
-                var hibernateConfig = Fluently.Configure().Mappings(m => m.FluentMappings.AddFromAssemblyOf<AdvertMap>())
+                var hibernateConfig = Fluently.Configure().Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserMap>())
                     .Database(MySQLConfiguration.Standard.ConnectionString(connectionString).ShowSql()).BuildConfiguration();
 
                 _sessionFactory = hibernateConfig.BuildSessionFactory();

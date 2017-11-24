@@ -9,29 +9,31 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using Shared.Entities;
+using BusinessLogic.Interfaces.Base.CRUD;
+using Shared.Entities.JsonModels;
 
 namespace WebSocket
 {
     [Route("api/[controller]")]
     public class TokenAuthController : BaseController
     {
-        //public IAdminService AdminService;
-        //public ISessionAdminService SessionAdminService;
+        public IUserService UserService;
+        public IUserSessionService UserSessionService;
 
         public TokenAuthController(
-            //[FromServices] IAdminService adminService,
-            //[FromServices] ISessionAdminService sessionAdminService
+            [FromServices] IUserService userService,
+            [FromServices] IUserSessionService userSessionService
             )
         {
-            AdminService = adminService;
-            SessionAdminService = sessionAdminService;
+            UserService = userService;
+            UserSessionService = userSessionService;
         }
 
         [HttpPost("get_auth_token")]
         [AllowAnonymous]
-        public string GetAuthToken([FromBody]AdminJson user)
+        public string GetAuthToken(UserJsonModel user)
         {
-            var existAdmin = AdminService.GetAll().FirstOrDefault(u => u.Login == user.Login && u.Password == user.Password);
+            var existAdmin = UserService.GetAll().FirstOrDefault(u => u.Login == user.Login && u.Password == user.Password);
 
             var currentDate = DateTime.Now;
 

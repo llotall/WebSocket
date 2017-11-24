@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\IDeletableObject.cs" />
+    <Compile Include="Entities\JsonModels\UserJsonModel.cs" />
     <Compile Include="Entities\PersistentObject.cs" />
     <Compile Include="Entities\RequestResult.cs" />
     <Compile Include="Entities\User.cs" />
@@ -49,8 +50,6 @@
     <Compile Include="Enums\ErrorCodes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="JsonModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

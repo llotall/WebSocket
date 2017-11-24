@@ -25,7 +25,6 @@ namespace WebSocket
             builder.AddEnvironmentVariables();
         }
 
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -35,9 +34,6 @@ namespace WebSocket
             services.AddNHibernate(Configuration);
 
             services.AddBuisnessServices();
-
-            services.AddUtils();
-
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
@@ -54,29 +50,29 @@ namespace WebSocket
                 policy.AllowCredentials();
             });
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                SlidingExpiration = true,
-                AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme,
-                Events = new CookieAuthenticationEvents()
-                {
-                    OnRedirectToLogin = ctx =>
-                    {
-                        // по умолчанию если не авторизован кидает на страницу логинки
-                        // это событие меняет поведение по умолчанию и просто отдает 401
-                        if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
-                        {
-                            ctx.Response.StatusCode = 401;
-                            return Task.FromResult<object>(null);
-                        }
-                        else
-                        {
-                            ctx.Response.Redirect(ctx.RedirectUri);
-                            return Task.FromResult<object>(null);
-                        }
-                    }
-                }
-            });
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions
+            //{
+            //    SlidingExpiration = true,
+            //    AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme,
+            //    Events = new CookieAuthenticationEvents()
+            //    {
+            //        OnRedirectToLogin = ctx =>
+            //        {
+            //            // по умолчанию если не авторизован кидает на страницу логинки
+            //            // это событие меняет поведение по умолчанию и просто отдает 401
+            //            if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
+            //            {
+            //                ctx.Response.StatusCode = 401;
+            //                return Task.FromResult<object>(null);
+            //            }
+            //            else
+            //            {
+            //                ctx.Response.Redirect(ctx.RedirectUri);
+            //                return Task.FromResult<object>(null);
+            //            }
+            //        }
+            //    }
+            //});
 
             app.UseStaticFiles(new StaticFileOptions()
             {
