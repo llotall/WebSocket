@@ -27,7 +27,7 @@ namespace WebSocketApi
             try
             {
                 var recieveJSON = JsonConvert.DeserializeObject<SocketJSON>(message);
-                if (recieveJSON.Type.Equals("order"))
+                if (recieveJSON.Type.Equals(""))//уточнить имя типа
                 {
                     var socketUser = socketUsers.FirstOrDefault(u => u.OrderData == recieveJSON.Message);
                     if (socketUser != null)

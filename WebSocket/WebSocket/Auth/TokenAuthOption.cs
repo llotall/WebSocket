@@ -5,8 +5,8 @@ namespace WebSocketApi.Auth
 {
     public class TokenAuthOption
     {
-        public static string Audience { get; } = "http://localhost:9955/";
-        public static string Issuer { get; } = "http://localhost:9955/";
+        public static string Audience { get; } = "Audience";
+        public static string Issuer { get; } = "Issuer";
         public static RsaSecurityKey Key { get; } = new RsaSecurityKey(RSAKeyHelper.GenerateKey());
         public static SigningCredentials SigningCredentials { get; } = new SigningCredentials(Key, SecurityAlgorithms.RsaSha256Signature);
 
