@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using WebSocket.Auth;
+using WebSocketApi.Auth;
 using System;
 using System.Linq;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,7 +12,7 @@ using Shared.Entities;
 using BusinessLogic.Interfaces.Base.CRUD;
 using Shared.Entities.JsonModels;
 
-namespace WebSocket
+namespace WebSocketApi
 {
     [Route("api/[controller]")]
     public class TokenAuthController : BaseController
@@ -31,7 +31,7 @@ namespace WebSocket
 
         [HttpPost("get_auth_token")]
         [AllowAnonymous]
-        public string GetAuthToken(UserJsonModel user)
+        public string GetAuthToken([FromBody]UserJsonModel user)
         {
             var existAdmin = UserService.GetAll().FirstOrDefault(u => u.Login == user.Login && u.Password == user.Password);
 
@@ -46,13 +46,7 @@ namespace WebSocket
                 return JsonConvert.SerializeObject(new RequestResult
                 {
                     State = RequestState.Success,
-                    Data = new
-                    {
-                        requertAt = requestAt,
-                        expiresIn = TokenAuthOption.ExpiresSpan.TotalSeconds,
-                        tokeyType = TokenAuthOption.TokenType,
-                        accessToken = token
-                    }
+                    AccessToken = token
                 });
             }
             else

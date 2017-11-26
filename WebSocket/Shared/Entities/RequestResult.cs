@@ -6,7 +6,7 @@ namespace Shared.Entities
     {
         public RequestState State { get; set; }
         public string Msg { get; set; }
-        public Object Data { get; set; }
+        public string AccessToken { get; set; }
     }
 
     public enum RequestState

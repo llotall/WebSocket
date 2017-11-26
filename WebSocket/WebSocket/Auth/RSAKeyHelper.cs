@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace WebSocket.Auth
+namespace WebSocketApi.Auth
 {
     public class RSAKeyHelper
     {

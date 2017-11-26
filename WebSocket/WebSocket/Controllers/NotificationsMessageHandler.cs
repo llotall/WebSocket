@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebSocketManager;
 
-namespace WebSocket
+namespace WebSocketApi
 {
     public class NotificationsMessageHandler : WebSocketHandler
     {
@@ -18,7 +18,7 @@ namespace WebSocket
 
         }
 
-        public override async Task ReceiveAsync(System.Net.WebSockets.WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
+        public override async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
         {
             
             var socketId = WebSocketConnectionManager.GetId(socket);
@@ -59,11 +59,5 @@ namespace WebSocket
 
         [JsonProperty("message")]
         public string Message { get; set; }
-
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-
-        [JsonProperty("money")]
-        public string Money { get; set; }
     }
 }

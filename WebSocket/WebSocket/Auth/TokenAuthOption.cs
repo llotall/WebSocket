@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
 
-namespace WebSocket.Auth
+namespace WebSocketApi.Auth
 {
     public class TokenAuthOption
     {

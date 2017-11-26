@@ -15,17 +15,17 @@ namespace WebSocketManager
             WebSocketConnectionManager = webSocketConnectionManager;
         }
 
-        public virtual async Task OnConnected(System.Net.WebSockets.WebSocket socket)
+        public virtual async Task OnConnected(WebSocket socket)
         {
             WebSocketConnectionManager.AddSocket(socket);
         }
 
-        public virtual async Task OnDisconnected(System.Net.WebSockets.WebSocket socket)
+        public virtual async Task OnDisconnected(WebSocket socket)
         {
             await WebSocketConnectionManager.RemoveSocket(WebSocketConnectionManager.GetId(socket));
         }
 
-        public async Task SendMessageAsync(System.Net.WebSockets.WebSocket socket, string message)
+        public async Task SendMessageAsync(WebSocket socket, string message)
         {
             if (socket.State != WebSocketState.Open)
                 return;

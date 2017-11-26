@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Storage;
 using BusinessLogic;
 using Microsoft.AspNetCore.Http;
+using WebSocketManager;
+using System;
 
-namespace WebSocket
+namespace WebSocketApi
 {
     public class Startup
     {
@@ -35,13 +37,14 @@ namespace WebSocket
 
             services.AddNHibernate(Configuration);
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                        .AddCookie(o => o.LoginPath = new PathString("/login"));
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //            .AddCookie(o => o.LoginPath = new PathString("/login"));
 
             services.AddBuisnessServices();
+            services.AddWebSocketManager();
         }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             var culture = CultureInfo.CreateSpecificCulture("ru-RU");
             CultureInfo.DefaultThreadCurrentCulture = culture;
@@ -64,7 +67,9 @@ namespace WebSocket
 
             app.UseMvc();
 
-            app.UseDeveloperExceptionPage();
+            app.UseWebSockets();
+
+            app.MapWebSocketManager("/websocket", serviceProvider.GetService<NotificationsMessageHandler>());
         }
     }
 }

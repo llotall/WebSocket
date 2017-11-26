@@ -9,30 +9,30 @@ namespace WebSocketManager
 {
     public class WebSocketConnectionManager
     {
-        private ConcurrentDictionary<string, System.Net.WebSockets.WebSocket> _sockets = new ConcurrentDictionary<string, System.Net.WebSockets.WebSocket>();
+        private ConcurrentDictionary<string, WebSocket> _sockets = new ConcurrentDictionary<string, WebSocket>();
 
         public System.Net.WebSockets.WebSocket GetSocketById(string id)
         {
             return _sockets.FirstOrDefault(p => p.Key == id).Value;
         }
 
-        public ConcurrentDictionary<string, System.Net.WebSockets.WebSocket> GetAll()
+        public ConcurrentDictionary<string, WebSocket> GetAll()
         {
             return _sockets;
         }
 
-        public string GetId(System.Net.WebSockets.WebSocket socket)
+        public string GetId(WebSocket socket)
         {
             return _sockets.FirstOrDefault(p => p.Value == socket).Key;
         }
-        public void AddSocket(System.Net.WebSockets.WebSocket socket)
+        public void AddSocket(WebSocket socket)
         {
             _sockets.TryAdd(CreateConnectionId(), socket);
         }
 
         public async Task RemoveSocket(string id)
         {
-            System.Net.WebSockets.WebSocket socket;
+            WebSocket socket;
             _sockets.TryRemove(id, out socket);
 
             await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,

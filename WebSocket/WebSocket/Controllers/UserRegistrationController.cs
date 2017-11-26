@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Entities;
 using BusinessLogic.Interfaces.Base.CRUD;
 using Shared.Entities.JsonModels;
+using Microsoft.AspNetCore.Authorization;
 
-namespace WebSocket.Controllers
+namespace WebSocketApi.Controllers
 {
     public class UserRegistrationController : BaseController
     {
@@ -20,26 +21,29 @@ namespace WebSocket.Controllers
         {
             UserService = userService;
         }
-        [HttpPost("registr")]
-        public IActionResult Post(UserRegJsonModel user)
+
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public IActionResult Post([FromBody]UserRegJsonModel user)
         {
             if (user == null)
-                return BadRequest(new { message = "Пустое тело запроса" });
+                return BadRequest(new { msg = "Пустое тело запроса" });
 
             if (string.IsNullOrEmpty(user.Login))
-                return BadRequest(new { message = "Логин не может быть пустым"});
+                return BadRequest(new { msg = "Логин не может быть пустым"});
 
             if (string.IsNullOrEmpty(user.Password))
-                return BadRequest(new { message = "Пароль не может быть пустым" });
+                return BadRequest(new { msg = "Пароль не может быть пустым" });
 
             if (string.IsNullOrEmpty(user.Name))
-                return BadRequest(new { message = "Имя не может быть пустым" });
+                return BadRequest(new { msg = "Имя не может быть пустым" });
 
             var isUserExist = UserService.GetAll().Any(x => x.Login == user.Login);
-            if (isUserExist == false)
-                UserService.Create(user);
+            if (isUserExist)
+                return Json(new { msg = "Логин занят другим пользователем" });
+            UserService.Create(user);
 
-            return BadRequest(new { Result = "ok"});
+            return Json(new { msg = "ok"});
         }
     }
 }
